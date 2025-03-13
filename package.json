@@ -13,6 +13,7 @@
     "@glidejs/glide": "^3.7.1",
     "@tabler/icons-react": "^3.31.0",
     "chart.js": "^4.4.8",
+    "framer-motion": "^12.5.0",
     "gsap": "^3.12.7",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",
