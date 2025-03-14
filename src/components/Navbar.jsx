@@ -79,14 +79,13 @@ export default function AnimeNavbar() {
         >
           <div className="flex flex-col items-center space-y-4 py-4">
             {navItems.map((item, index) => (
-              <a
+              <NavLink
                 key={index}
-                href={`#${item.toLowerCase()}`}
-                className="text-lg text-white hover:text-[#9ca081] transition duration-300"
-                onClick={() => setIsOpen(false)}
+                to={item.to}
+                className="text-lg font-medium hover:text-[#9ca081] transition duration-300 "
               >
-                {item}
-              </a>
+                {item.name}
+              </NavLink>
             ))}
           </div>
         </motion.div>
