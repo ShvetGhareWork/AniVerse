@@ -21,13 +21,13 @@ export default function CardSliderPopular() {
 
   return (
     <motion.div
-      className="bg-[#f2de9b] overflow-hidden relative"
+      className="bg-transparent overflow-hidden relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
       {/* Title */}
-      <div className="flex justify-start pl-12 text-[#202216] font-semibold items-start">
+      <div className="flex justify-start pl-4 text-[#202216] font-semibold items-start">
         <ScrollFloat
           animationDuration={1}
           ease="back.inOut(2)"
@@ -40,7 +40,7 @@ export default function CardSliderPopular() {
       </div>
 
       {/* Card Slider with Fade Effect */}
-      <div className="overflow-x-auto pl-12 whitespace-nowrap no-scrollbar mb-10 p-4 relative">
+      <div className="overflow-x-auto pl-4 whitespace-nowrap no-scrollbar mb-10 p-4 relative">
         <div className="flex no-scrollbar space-x-6">
           {items.map((item, index) => (
             <motion.div
@@ -99,7 +99,7 @@ export default function CardSliderPopular() {
         </div>
 
         {/* Gradient Overlay for Right Fade */}
-        <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#f2de9b] via-[#f2de9b] to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l to-transparent pointer-events-none"></div>
       </div>
     </motion.div>
   );

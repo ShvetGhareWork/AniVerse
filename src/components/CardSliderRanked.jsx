@@ -28,7 +28,7 @@ export default function CardSliderRanked() {
       transition={{ duration: 0.8 }}
     >
       {/* Title */}
-      <div className="flex justify-start pl-12 text-[#f2de9b] font-semibold items-start">
+      <div className="flex justify-start pl-4 text-[#f2de9b] font-semibold items-start">
         <ScrollFloat
           animationDuration={1}
           ease="back.inOut(2)"
@@ -41,7 +41,7 @@ export default function CardSliderRanked() {
       </div>
 
       {/* Card Slider */}
-      <div className="overflow-x-auto pl-12 whitespace-nowrap no-scrollbar mb-10 p-4 relative">
+      <div className="overflow-x-auto pl-4 whitespace-nowrap no-scrollbar mb-10 p-4 relative">
         <div className="flex no-scrollbar space-x-6">
           {items.map((item, index) => (
             <motion.div
