@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import "../App.css";
-import ScrollFloat from "./ScrollText";
+import ScrollFloat from "../ReactBits/ScrollText.jsx";
+import GenreGrid from "./GenreGrid.jsx";
 
 const AnimatedItem = ({
   children,
@@ -125,8 +126,7 @@ const AnimatedList = ({
 
   return (
     <div className="flex items-center justify-between">
-      <h2>hello</h2>
-
+      <GenreGrid />
       <div>
         <div className="bg-[#202216] border border-[#f2de9b] rounded-lg mr-7">
           <div className="pl-4 text-xl font-semibold text-[#f2de9b]">

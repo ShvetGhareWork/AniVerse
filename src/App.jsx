@@ -8,7 +8,7 @@ import CardSliderPopular from "./components/CardSliderPopular.jsx";
 import CardSliderTrending from "./components/CardSliderTrending.jsx";
 import CardSliderRanked from "./components/CardSliderRanked.jsx";
 import CircularGallery from "./ReactBits/Gallery.jsx";
-import Genre from "./ReactBits/Genre.jsx";
+import Genre from "./components/Genre.jsx";
 
 const App = () => {
   const { products } = useContext(ShopContext);
@@ -60,13 +60,13 @@ const App = () => {
         <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.05} />
       </div>
 
-      {/* <Genre
+      <Genre
         items={genres}
         onItemSelect={(item, index) => console.log(item, index)}
         showGradients={true}
         enableArrowNavigation={true}
         displayScrollbar={true}
-      /> */}
+      />
     </>
   );
 };

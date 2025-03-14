@@ -16,9 +16,11 @@ const ProductDetails = ({ product }) => {
       transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
       className="absolute bottom-6 left-4 md:bottom-12 md:left-8 flex flex-col gap-3 text-white"
     >
-      <h3 className="text-[#f2de9b] font-bold text-lg md:text-2xl"></h3>
+      <h3 className="text-[#f2de9b] font-bold text-lg md:text-2xl">
+        {product.title}
+      </h3>
       <p className="text-gray-300 text-sm md:text-lg">
-        <b>Genre:</b> {product.genre.join(", ")}
+        <b>Genre:</b> {product.genre?.join(", ") || "N/A"}
       </p>
       <motion.a
         initial={{ opacity: 0, scale: 0.8 }}
@@ -41,7 +43,13 @@ export default function Slider() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [loading, setLoading] = useState(true);
 
-  const firstTenProducts = products.slice(0, 10);
+  useEffect(() => {
+    // Simulate loading for 2 seconds to ensure smooth skeleton animation
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
+  // Ensure products is not undefined and has items
+  const firstTenProducts = Array.isArray(products) ? products.slice(0, 10) : [];
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % firstTenProducts.length);
@@ -55,23 +63,31 @@ export default function Slider() {
   }, [firstTenProducts.length]);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!isAutoPlaying || firstTenProducts.length === 0) return;
 
     const interval = setInterval(() => {
       nextSlide();
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide]);
+  }, [isAutoPlaying, nextSlide, firstTenProducts.length]);
 
-  // Simulate Loading Delay
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 2000);
-  }, []);
+  if (loading) {
+    return <SliderSkeleton />;
+  }
+
+  // If no products available
+  if (firstTenProducts.length === 0) {
+    return (
+      <div className="text-center p-10 text-gray-500 text-xl">
+        No products available
+      </div>
+    );
+  }
 
   return (
     <div
-      className="relative w-full h-full max-h-xxxl max-w-7xl mx-auto mb-28 mt-12 overflow-hidden rounded-lg shadow-lg"
+      className="relative w-full h-[540px] max-w-8xl mb-28 overflow-hidden shadow-lg"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
@@ -82,41 +98,36 @@ export default function Slider() {
         {firstTenProducts.map((product, index) => (
           <div
             key={index}
-            className="w-full h-[350px] md:h-[450px] flex-shrink-0 relative"
+            className="w-full h-[540px] md:h-[540px] flex-shrink-0 relative"
           >
-            {loading ? (
-              <SliderSkeleton />
-            ) : (
-              <>
-                <div className="relative w-full h-full">
-                  <img
-                    src={product.img_url}
-                    alt={product.title}
-                    className="object-cover w-full h-full opacity-60"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)",
-                    }}
-                  />
-                </div>
-                <motion.h3
-                  initial={{ opacity: 0, x: -20, y: -20 }}
-                  animate={{ opacity: 1, x: 0, y: 0 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="absolute top-4 left-4 md:top-8 md:left-8 text-2xl md:text-4xl text-[#f2de9b] font-bold"
-                >
-                  {product.title}
-                </motion.h3>
-                <ProductDetails product={product} />
-              </>
-            )}
+            <div className="relative w-full h-full">
+              <img
+                src={product.img_url}
+                alt={product.title}
+                className="object-cover w-full h-[540px] opacity-60"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)",
+                }}
+              />
+            </div>
+            <motion.h3
+              initial={{ opacity: 0, x: -20, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute top-4 left-4 md:top-8 md:left-8 text-2xl md:text-4xl text-[#f2de9b] font-bold"
+            >
+              {product.title}
+            </motion.h3>
+            <ProductDetails product={product} />
           </div>
         ))}
       </div>
 
+      {/* Navigation Buttons */}
       <button
         className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700"
         onClick={prevSlide}
@@ -130,7 +141,8 @@ export default function Slider() {
         <ChevronRight size={24} />
       </button>
 
-      <div className="absolute bottom-4 w-full flex justify-center gap-2">
+      {/* Dots Indicator */}
+      <div className="absolute bottom-4 left-10 w-full flex justify-center gap-2">
         {firstTenProducts.map((_, index) => (
           <button
             key={index}
