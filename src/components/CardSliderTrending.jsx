@@ -30,8 +30,8 @@ export default function CardSliderTrending() {
         <ScrollFloat
           animationDuration={1}
           ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
+          scrollStart="center bottom+=0%"
+          scrollEnd="bottom bottom-=0%"
           stagger={0.03}
         >
           Top Trending
