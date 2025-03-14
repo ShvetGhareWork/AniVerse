@@ -17,7 +17,7 @@ export default function CardSliderPopular() {
       popular: product.popularity,
       rank: product.ranked,
     }))
-    .sort((a, b) => a.rank - b.rank)
+    .sort((a, b) => b.rank - a.rank)
     .slice(0, 15);
 
   // Mobile limit 6 items, View More shows the rest
