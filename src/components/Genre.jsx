@@ -84,7 +84,7 @@ const AnimatedList = ({
   return (
     <div className="flex flex-col md:flex-row  items-start justify-between">
       <div className="w-full md:w-1/3">
-        <div className="bg-[#202216] border border-[#f2de9b] rounded-lg mr-4 ml-3">
+        <div className="bg-[#202216] border  border-[#f2de9b] mb-5 mr-4 ml-3">
           <div className="pl-4 text-xl font-semibold text-[#f2de9b]">
             <ScrollFloat
               animationDuration={1}
