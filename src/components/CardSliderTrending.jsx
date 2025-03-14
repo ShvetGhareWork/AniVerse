@@ -20,7 +20,7 @@ export default function CardSliderTrending() {
 
   return (
     <motion.div
-      className="bg-[#202216] overflow-hidden relative"
+      className="bg-[#202216] overflow-hidden mt-16 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -98,7 +98,7 @@ export default function CardSliderTrending() {
         </div>
 
         {/* Gradient Overlay for Right Fade */}
-        <div className=" top-0 right-0 w-24 h-full bg-gradient-to-l from-[#202216] via-[#202216] to-transparent pointer-events-none"></div>
+        <div className="top-0 right-0 w-24 h-full bg-gradient-to-l from-[#202216] via-[#202216] to-transparent pointer-events-none"></div>
       </div>
     </motion.div>
   );

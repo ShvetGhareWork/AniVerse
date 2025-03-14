@@ -8,7 +8,7 @@ export default function AnimeNavbar() {
   const navItems = ["Home", "Anime", "Manga", "Characters", "About"];
 
   return (
-    <nav className="relative bg-gradient-to-br from-[#202216] via-[#2c2f23] to-[#4a4d39] text-[#f2de9b] shadow-lg">
+    <nav className="sticky top-0 z-50 bg-gradient-to-br from-[#202216] via-[#2c2f23] to-[#4a4d39] text-[#f2de9b] shadow-lg">
       {/* Desktop Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

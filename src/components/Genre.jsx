@@ -13,6 +13,7 @@ const AnimatedItem = ({
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.5, triggerOnce: false });
+
   return (
     <motion.div
       ref={ref}
@@ -30,23 +31,7 @@ const AnimatedItem = ({
 };
 
 const AnimatedList = ({
-  items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-    "Item 7",
-    "Item 8",
-    "Item 9",
-    "Item 10",
-    "Item 11",
-    "Item 12",
-    "Item 13",
-    "Item 14",
-    "Item 15",
-  ],
+  items = [],
   onItemSelect,
   showGradients = true,
   enableArrowNavigation = true,
@@ -70,7 +55,7 @@ const AnimatedList = ({
     );
   };
 
-  // Keyboard navigation: arrow keys, tab, and enter selection
+  // Keyboard Navigation
   useEffect(() => {
     if (!enableArrowNavigation) return;
     const handleKeyDown = (e) => {
@@ -96,39 +81,10 @@ const AnimatedList = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
 
-  // Scroll the selected item into view if needed
-  useEffect(() => {
-    if (!keyboardNav || selectedIndex < 0 || !listRef.current) return;
-    const container = listRef.current;
-    const selectedItem = container.querySelector(
-      `[data-index="${selectedIndex}"]`
-    );
-    if (selectedItem) {
-      const extraMargin = 50;
-      const containerScrollTop = container.scrollTop;
-      const containerHeight = container.clientHeight;
-      const itemTop = selectedItem.offsetTop;
-      const itemBottom = itemTop + selectedItem.offsetHeight;
-      if (itemTop < containerScrollTop + extraMargin) {
-        container.scrollTo({ top: itemTop - extraMargin, behavior: "smooth" });
-      } else if (
-        itemBottom >
-        containerScrollTop + containerHeight - extraMargin
-      ) {
-        container.scrollTo({
-          top: itemBottom - containerHeight + extraMargin,
-          behavior: "smooth",
-        });
-      }
-    }
-    setKeyboardNav(false);
-  }, [selectedIndex, keyboardNav]);
-
   return (
-    <div className="flex items-center justify-between">
-      <GenreGrid />
-      <div>
-        <div className="bg-[#202216] border border-[#f2de9b] rounded-lg mr-7">
+    <div className="flex flex-col md:flex-row items-start justify-between">
+      <div className="w-full md:w-1/3">
+        <div className="bg-[#202216] border border-[#f2de9b] rounded-lg mr-4 ml-3">
           <div className="pl-4 text-xl font-semibold text-[#f2de9b]">
             <ScrollFloat
               animationDuration={1}
@@ -140,17 +96,12 @@ const AnimatedList = ({
               Top Genres
             </ScrollFloat>
           </div>
-          <div className={`relative w-[500px] ${className}`}>
+          <div className={`relative ${className}`}>
             <div
               ref={listRef}
-              className={`max-h-[400px] overflow-y-auto p-4 ${
-                displayScrollbar ? "no-scrollbar" : "no-scrollbar"
-              }`}
+              className="max-h-[400px] md:max-h-[730px] overflow-y-auto p-4 md:pb-4 no-scrollbar"
               onScroll={handleScroll}
-              style={{
-                scrollbarWidth: "none",
-                scrollbarColor: "",
-              }}
+              style={{ scrollbarWidth: "none" }}
             >
               {items.map((item, index) => (
                 <AnimatedItem
@@ -166,11 +117,21 @@ const AnimatedList = ({
                   }}
                 >
                   <div
-                    className={`p-4 bg-[#111] rounded-lg ${
+                    className={`relative bg-[#111] rounded-lg ${
                       selectedIndex === index ? "bg-[#222]" : ""
                     } ${itemClassName}`}
                   >
-                    <p className="text-white m-0">{item}</p>
+                    {/* Image */}
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="w-full h-full max-h-32 hover:opacity-100 object-cover rounded-lg"
+                    />
+
+                    {/* Text Overlay */}
+                    <div className="absolute inset-0 flex items-center pl-4 rounded-lg">
+                      <p className="text-white">{item.genre}</p>
+                    </div>
                   </div>
                 </AnimatedItem>
               ))}
@@ -178,11 +139,11 @@ const AnimatedList = ({
             {showGradients && (
               <>
                 <div
-                  className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b pointer-events-none transition-opacity duration-300 ease"
+                  className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-[#202216] to-transparent pointer-events-none transition-opacity duration-300 ease"
                   style={{ opacity: topGradientOpacity }}
                 ></div>
                 <div
-                  className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t pointer-events-none transition-opacity duration-300 ease"
+                  className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#202216] to-transparent pointer-events-none transition-opacity duration-300 ease"
                   style={{ opacity: bottomGradientOpacity }}
                 ></div>
               </>
@@ -190,6 +151,12 @@ const AnimatedList = ({
           </div>
         </div>
       </div>
+      {/* Genre Grid */}
+      <div className="w-full md:w-2/3 mb-4 md:mb-0">
+        <GenreGrid />
+      </div>
+
+      {/* Genre List */}
     </div>
   );
 };

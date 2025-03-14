@@ -366,47 +366,47 @@ class App {
       },
       {
         image: `/roronoa.png`,
-        text: "Roronoa",
+        text: "Roronoa Zoro",
       },
       {
         image: `/marin.png`,
-        text: "Marin",
+        text: "Marin Kitagawa",
       },
       {
         image: `/ichigo.png`,
-        text: "Ichigo",
+        text: "Ichigo Kurosaki",
       },
       {
         image: `/nezuko.png`,
-        text: "Nezuko",
+        text: "Nezuko Kamado",
       },
       {
         image: `/gojo.png`,
-        text: "Satoru",
+        text: "Satoru Gojo",
       },
       {
         image: `/mai.png`,
-        text: "Sakurajima",
+        text: "Sakurajima Mai",
       },
       {
         image: `/dio.png`,
-        text: "Brando",
+        text: "Brando Dio",
       },
       {
         image: `/yuno.png`,
-        text: "Yuno",
+        text: "Yuno wasai",
       },
       {
         image: `/eren.png`,
-        text: "Yeager",
+        text: "Yeager Eren",
       },
       {
         image: `/vp.png`,
-        text: "Shinomiya",
+        text: "Shinomiya Kaguya",
       },
       {
         image: `/yagami.png`,
-        text: "Yagami",
+        text: "Yagami Light",
       },
     ];
 
