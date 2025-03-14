@@ -22,7 +22,7 @@ const GenreGrid = () => {
   }, [products]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pb-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-2">
       {/* Skeleton Loader */}
       {loading
         ? Array.from({ length: window.innerWidth < 768 ? 8 : 16 }).map(

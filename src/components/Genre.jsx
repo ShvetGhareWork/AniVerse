@@ -82,7 +82,7 @@ const AnimatedList = ({
   }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
 
   return (
-    <div className="flex flex-col md:flex-row items-start justify-between">
+    <div className="flex flex-col md:flex-row  items-start justify-between">
       <div className="w-full md:w-1/3">
         <div className="bg-[#202216] border border-[#f2de9b] rounded-lg mr-4 ml-3">
           <div className="pl-4 text-xl font-semibold text-[#f2de9b]">
@@ -99,7 +99,7 @@ const AnimatedList = ({
           <div className={`relative ${className}`}>
             <div
               ref={listRef}
-              className="max-h-[400px] md:max-h-[730px] overflow-y-auto p-4 md:pb-4 no-scrollbar"
+              className="max-h-[400px] md:max-h-[730px] overflow-y-auto p-4 md:mb-4 no-scrollbar"
               onScroll={handleScroll}
               style={{ scrollbarWidth: "none" }}
             >

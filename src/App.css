@@ -39,7 +39,11 @@
 
 body {
   background: linear-gradient(135deg, #f2de9b, #202216);
-  height: auto;
+  /* background-image: url("/bg.png"); */
+  /* height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 69%; */
 }
 
 @layer utilities {

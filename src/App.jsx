@@ -9,6 +9,8 @@ import CardSliderTrending from "./components/CardSliderTrending.jsx";
 import CardSliderRanked from "./components/CardSliderRanked.jsx";
 import CircularGallery from "./ReactBits/Gallery.jsx";
 import Genre from "./components/Genre.jsx";
+import AddComment from "./components/AddComment.jsx";
+import Footer from "./components/Footer.jsx";
 
 const App = () => {
   const { products } = useContext(ShopContext);
@@ -42,6 +44,10 @@ const App = () => {
     { genre: "Dementia", image: "/dementia.png" },
   ];
 
+  const handleCommentPost = (comment) => {
+    console.log("New Comment:", comment);
+  };
+
   return (
     <>
       {/* //{" "}
@@ -66,6 +72,10 @@ const App = () => {
         enableArrowNavigation={true}
         displayScrollbar={true}
       />
+      <div className="w-full h-full p-7 lg:p-20">
+        <AddComment onCommentPost={handleCommentPost} />
+      </div>
+      <Footer />
     </>
   );
 };

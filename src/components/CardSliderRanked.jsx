@@ -4,7 +4,7 @@ import ShopContext from "../context/ShopContext";
 import ScrollFloat from "../ReactBits/ScrollText";
 import "../App.css";
 
-export default function CardSliderRanked() {
+export default function CardSliderPopular() {
   const { products } = useContext(ShopContext);
 
   const items = products
@@ -15,16 +15,20 @@ export default function CardSliderRanked() {
       rating: product.score,
       episodes: product.episodes,
       popular: product.popularity,
-      rank: Number(product.ranked),
+      rank: product.ranked,
     }))
-    .sort((a, b) => b.rank - a.rank)
+    .sort((a, b) => a.rank - b.rank)
     .slice(0, 15);
+
+  // Mobile limit 6 items, View More shows the rest
+  const visibleItems = items.slice(0, 4);
 
   return (
     <motion.div
       className="bg-[#202216] overflow-hidden relative"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.3 }}
       transition={{ duration: 0.8 }}
     >
       {/* Title */}
@@ -40,18 +44,20 @@ export default function CardSliderRanked() {
         </ScrollFloat>
       </div>
 
-      {/* Card Slider */}
-      <div className="overflow-x-auto pl-4 whitespace-nowrap no-scrollbar mb-10 p-4 relative">
-        <div className="flex no-scrollbar space-x-6">
-          {items.map((item, index) => (
+      {/* Mobile List View | Laptop Card Slider */}
+      <div className="p-4 mb-10">
+        {/* Mobile View: List Layout */}
+        <div className="md:hidden space-y-4">
+          {visibleItems.map((item, index) => (
             <motion.div
               key={item.key}
-              className="w-60 bg-[#202216] text-[#f2de9b] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#f2de9b]"
-              initial={{ x: "100%", opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
+              className="flex items-center space-x-4 bg-[#202216] text-[#f2de9b] shadow-lg rounded-lg border border-[#f2de9b] p-2"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
               transition={{
                 duration: 0.5,
-                delay: index * 0.2,
+                delay: index * 0.1,
                 ease: "easeOut",
               }}
             >
@@ -59,19 +65,68 @@ export default function CardSliderRanked() {
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-60 object-cover"
+                className="w-20 h-20 object-cover rounded-lg"
+              />
+
+              {/* Content */}
+              <div className="flex-1">
+                {/* Title */}
+                {/* Title */}
+                <h3
+                  className="text-lg font-semibold truncate overflow-hidden whitespace-nowrap max-w-full"
+                  title={item.name}
+                >
+                  {item.name.slice(0, 20) + "..."}
+                </h3>
+
+                {/* Rating */}
+                <div className="flex items-center mt-1">
+                  <span className="text-yellow-400 text-lg">★</span>
+                  <span className="ml-2 text-lg">{item.rating}</span>
+                </div>
+
+                {/* Episodes */}
+                <div className="text-sm bg-[#f2de9b] text-[#202216] rounded-full px-3 py-1 inline-block mt-2">
+                  {item.episodes} Episodes
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Laptop View: Cards Layout */}
+        <div className="hidden md:flex no-scrollbar space-x-6 overflow-x-auto">
+          {items.map((item, index) => (
+            <motion.div
+              key={item.key}
+              className="w-60 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#202216]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+            >
+              {/* Image */}
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-40 md:h-60 object-cover"
               />
 
               {/* Card Content */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.3, delay: 0.2 }}
                 className="p-4"
               >
                 {/* Title */}
                 <h3
-                  className="text-xl font-semibold truncate max-w-full"
+                  className="text-xl font-semibold truncate max-w-full overflow-hidden whitespace-nowrap"
                   title={item.name}
                 >
                   {item.name}
@@ -87,20 +142,17 @@ export default function CardSliderRanked() {
                 <div className="mt-2 text-sm bg-[#f2de9b] text-[#202216] rounded-full px-3 py-1 inline-block">
                   {item.episodes} Episodes
                 </div>
-
-                {/* Watch Now Button */}
-                <div className="mt-4 flex flex-col items-start space-y-2">
-                  <button className="bg-gradient-to-r from-[#f2de9b] to-[#c4a76b] text-[#202216] px-4 py-2 rounded-full font-bold hover:from-[#c4a76b] hover:to-[#f2de9b] transition">
-                    Watch Now
-                  </button>
-                </div>
               </motion.div>
             </motion.div>
           ))}
         </div>
 
-        {/* Gradient Overlay for Right Fade */}
-        <div className=" top-0 right-0 w-24 h-full bg-gradient-to-l from-[#202216] via-[#202216] to-transparent pointer-events-none"></div>
+        {/* View More (Mobile Only) */}
+        <div className="mt-4 flex justify-center md:hidden">
+          <button className="text-[#f2de9b] from-[#202216] bg-gradient-to-r to-[#c4a76b] px-6 py-2 rounded-lg font-semibold hover:bg-[#c4a76b] transition">
+            View More
+          </button>
+        </div>
       </div>
     </motion.div>
   );
