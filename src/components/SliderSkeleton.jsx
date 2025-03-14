@@ -1,6 +1,6 @@
 const SliderSkeleton = () => {
   return (
-    <div className="w-full h-[540px] gap-3 mb-16 flex-shrink-0 relative bg-black animate-pulse">
+    <div className="w-full h-[540px] gap-3 mb-28 flex-shrink-0 relative bg-black animate-pulse">
       {/* Black Screen for Image */}
       <div className="absolute inset-0 bg-black opacity-60" />
 
