@@ -87,7 +87,7 @@ export default function Slider() {
 
   return (
     <div
-      className="relative w-full h-[540px] max-w-8xl mb-28 overflow-hidden shadow-lg"
+      className="relative w-full h-[540px] max-w-8xl mb-16 overflow-hidden shadow-lg"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
