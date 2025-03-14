@@ -26,7 +26,7 @@ export default function AddComment() {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
-          className="w-full h-[200px] md:w-[400px] md:h-[300px] px-4 py-2 bg-[#2c2f23] border-2 border-[#f2de9b] text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f2de9b] text-sm resize-none"
+          className="w-full h-[200px] md:w-[500px] md:h-[300px] px-4 py-2 bg-[#2c2f23] opacity-30 hover:opacity-100 transition-all duration-500 border-2 border-[#f2de9b] text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#f2de9b] text-sm resize-none"
         ></textarea>
 
         {/* Post Button */}

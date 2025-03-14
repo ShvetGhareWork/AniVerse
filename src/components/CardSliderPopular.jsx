@@ -93,7 +93,7 @@ export default function CardSliderPopular() {
         </div>
 
         {/* Laptop View: Cards Layout */}
-        <div className="hidden md:flex no-scrollbar space-x-6 overflow-x-auto">
+        <div className="hidden md:flex no-scrollbar space-x-6 overflow-x-auto overflow-y-clip">
           {items.map((item, index) => (
             <motion.div
               key={item.key}

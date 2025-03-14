@@ -17,7 +17,7 @@ export default function CardSliderPopular() {
       popular: product.popularity,
       rank: product.ranked,
     }))
-    .sort((a, b) => a.score - b.score)
+    .sort((a, b) => b.rating - a.rating)
     .slice(0, 15);
 
   // Mobile limit 6 items, View More shows the rest
@@ -95,11 +95,11 @@ export default function CardSliderPopular() {
         </div>
 
         {/* Laptop View: Cards Layout */}
-        <div className="hidden md:flex no-scrollbar space-x-6 overflow-x-auto">
+        <div className="hidden md:flex no-scrollbar space-x-6 overflow-x-auto overflow-y-clip">
           {items.map((item, index) => (
             <motion.div
               key={item.key}
-              className="w-60 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#202216]"
+              className="w-60 h-auto bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#202216]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}

@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 export default function AnimeNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = ["Home", "Anime", "Manga", "Characters", "About"];
+  const navItems = [
+    { name: "Anime", to: "/anime" },
+    { name: "Manga", to: "/manga" },
+    { name: "Characters", to: "/characters" },
+    { name: "About", to: "/about" },
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-gradient-to-br from-[#202216] via-[#2c2f23] to-[#4a4d39] text-[#f2de9b] shadow-lg">
@@ -34,21 +40,20 @@ export default function AnimeNavbar() {
                   fill="#f2de9b"
                 />
               </svg>
-              <span>AniVerse</span>
+              <NavLink to="/">AniVerse</NavLink>
             </div>
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-16">
             {navItems.map((item, index) => (
-              <motion.a
+              <NavLink
                 key={index}
-                href={`#${item.toLowerCase()}`}
-                whileHover={{ scale: 1.1, color: "#9ca081" }}
-                className="text-lg font-medium hover:text-[#9ca081] transition duration-300"
+                to={item.to}
+                className="text-lg font-medium hover:text-[#9ca081] transition duration-300 "
               >
-                {item}
-              </motion.a>
+                {item.name}
+              </NavLink>
             ))}
           </div>
 
