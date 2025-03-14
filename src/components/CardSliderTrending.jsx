@@ -98,7 +98,7 @@ export default function CardSliderTrending() {
         </div>
 
         {/* Gradient Overlay for Right Fade */}
-        <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-[#202216] via-[#202216] to-transparent pointer-events-none"></div>
+        <div className=" top-0 right-0 w-24 h-full bg-gradient-to-l from-[#202216] via-[#202216] to-transparent pointer-events-none"></div>
       </div>
     </motion.div>
   );

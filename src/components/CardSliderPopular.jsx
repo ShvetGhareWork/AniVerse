@@ -21,7 +21,7 @@ export default function CardSliderPopular() {
 
   return (
     <motion.div
-      className="bg-transparent overflow-hidden relative"
+      className="bg-[#f2de9b] overflow-hidden relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -99,7 +99,7 @@ export default function CardSliderPopular() {
         </div>
 
         {/* Gradient Overlay for Right Fade */}
-        <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l to-transparent pointer-events-none"></div>
+        <div className=" top-0 right-0 w-24 h-full bg-gradient-to-l from-[#f2de9b] via-[#f2de9b] to-transparent pointer-events-none"></div>
       </div>
     </motion.div>
   );

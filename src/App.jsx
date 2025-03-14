@@ -60,13 +60,13 @@ const App = () => {
         <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.05} />
       </div>
 
-      <Genre
+      {/* <Genre
         items={genres}
         onItemSelect={(item, index) => console.log(item, index)}
         showGradients={true}
         enableArrowNavigation={true}
         displayScrollbar={true}
-      />
+      /> */}
     </>
   );
 };
