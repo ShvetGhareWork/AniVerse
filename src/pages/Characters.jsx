@@ -10,17 +10,20 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 export default function Characters() {
   const { Character } = useContext(ShopContext);
   const [selectedLetter, setSelectedLetter] = useState("A");
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
-  }, [selectedLetter]);
+  }, [selectedLetter, searchTerm]);
 
   const animeCharacters = Character;
-  const filteredCharacters = animeCharacters.filter((char) =>
-    char.romji?.startsWith(selectedLetter)
+  const filteredCharacters = animeCharacters.filter(
+    (char) =>
+      char.romji?.startsWith(selectedLetter) &&
+      char.romji?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -30,6 +33,7 @@ export default function Characters() {
         <h1 className="text-4xl font-bold text-center mb-6 text-[#202216]">
           Anime Characters
         </h1>
+        {/* Alphabet Buttons */}
         <div className="flex justify-center gap-2 flex-wrap mb-6">
           {alphabet.map((letter) => (
             <motion.button
@@ -48,6 +52,18 @@ export default function Characters() {
           ))}
         </div>
 
+        {/* Search Bar */}
+        <div className="flex justify-center mb-6">
+          <input
+            type="text"
+            placeholder="Search Characters..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-lg px-4 py-2 border rounded-lg text-[#202216] focus:outline-none focus:ring-2 focus:ring-[#f2de9b]"
+          />
+        </div>
+
+        {/* Character Cards */}
         {loading ? (
           <motion.div
             layout
