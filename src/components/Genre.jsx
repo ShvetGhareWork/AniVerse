@@ -1,8 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import "../App.css";
 import ScrollFloat from "../ReactBits/ScrollText.jsx";
-import GenreGrid from "./GenreGrid.jsx";
+import AnimeGrid from "./AnimeGrid.jsx";
+import MangaGrid from "./MangaGrid.jsx";
 
 const AnimatedItem = ({
   children,
@@ -40,6 +42,7 @@ const AnimatedList = ({
   displayScrollbar = false,
   initialSelectedIndex = -1,
 }) => {
+  const location = useLocation();
   const listRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
   const [keyboardNav, setKeyboardNav] = useState(false);
@@ -82,7 +85,7 @@ const AnimatedList = ({
   }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
 
   return (
-    <div className="flex flex-col md:flex-row  items-start justify-between">
+    <div className="flex flex-col md:flex-row pt-5 items-start justify-between">
       <div className="w-full md:w-1/3">
         <div className="bg-[#202216] border  border-[#f2de9b] mb-5 mr-4 ml-3">
           <div className="pl-4 text-xl font-semibold text-[#f2de9b]">
@@ -153,7 +156,7 @@ const AnimatedList = ({
       </div>
       {/* Genre Grid */}
       <div className="w-full md:w-2/3 mb-4 md:mb-0">
-        <GenreGrid />
+        {location.pathname.includes("manga") ? <MangaGrid /> : <AnimeGrid />}
       </div>
 
       {/* Genre List */}

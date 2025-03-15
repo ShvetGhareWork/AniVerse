@@ -123,7 +123,7 @@ export default function CardSliderPopular() {
                 </div>
 
                 {/* Episodes */}
-                <div className="mt-2 text-sm bg-[#f2de9b] text-[#202216] rounded-full px-3 py-1 inline-block">
+                <div className="mt-2 text-sm bg-[#202216] text-[#f2de9b] rounded-full px-3 py-1 inline-block">
                   {item.episodes} Episodes
                 </div>
               </motion.div>

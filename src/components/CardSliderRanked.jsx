@@ -4,7 +4,7 @@ import ShopContext from "../context/ShopContext";
 import ScrollFloat from "../ReactBits/ScrollText";
 import "../App.css";
 
-export default function CardSliderPopular() {
+export default function CardSliderRanked() {
   const { products } = useContext(ShopContext);
 
   const items = products
@@ -85,7 +85,7 @@ export default function CardSliderPopular() {
           {items.map((item, index) => (
             <div
               key={item.key}
-              className="w-60 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#202216]"
+              className="w-60 bg-[#202216] text-[#f2de9b] border-[#f2de9b] shadow-lg rounded-lg overflow-hidden shrink-0 border "
             >
               {/* Image */}
               <img
