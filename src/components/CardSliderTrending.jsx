@@ -27,15 +27,7 @@ export default function CardSliderPopular() {
     <div className="bg-[#202216] overflow-hidden relative">
       {/* Title */}
       <div className="flex justify-start pl-4 text-[#f2de9b] font-semibold items-start">
-        <ScrollFloat
-          animationDuration={1}
-          ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
-          stagger={0.03}
-        >
-          Top Trending
-        </ScrollFloat>
+        Top Trending
       </div>
 
       {/* Mobile List View | Laptop Card Slider */}
