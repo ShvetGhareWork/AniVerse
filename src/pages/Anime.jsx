@@ -50,32 +50,37 @@ const App = () => {
 
   return (
     <>
-      {/* //{" "}
       <div>
-        // <div>{products.map(ProductDetails)}</div>
-        //{" "}
+        {/* //{" "}
+      <div>
+      // <div>{products.map(ProductDetails)}</div>
+      //{" "}
       </div> */}
-      <Navbar />
-      <Slider />
+        <Navbar />
+        <Slider />
 
-      <CardSliderTrending />
-      <CardSliderPopular />
-      <CardSliderRanked />
-      <div className="mb-14" style={{ height: "600px", position: "relative" }}>
-        <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.05} />
-      </div>
+        <CardSliderTrending />
+        <CardSliderPopular />
+        <CardSliderRanked />
+        <div
+          className="mb-14"
+          style={{ height: "600px", position: "relative" }}
+        >
+          <CircularGallery bend={0} textColor="#ffffff" borderRadius={0.05} />
+        </div>
 
-      <Genre
-        items={genres}
-        onItemSelect={(item, index) => console.log(item, index)}
-        showGradients={true}
-        enableArrowNavigation={true}
-        displayScrollbar={true}
-      />
-      <div className="w-full h-full p-7 lg:p-20">
-        <AddComment onCommentPost={handleCommentPost} />
+        <Genre
+          items={genres}
+          onItemSelect={(item, index) => console.log(item, index)}
+          showGradients={true}
+          enableArrowNavigation={true}
+          displayScrollbar={true}
+        />
+        <div className="w-full h-full p-7 lg:p-20">
+          <AddComment onCommentPost={handleCommentPost} />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

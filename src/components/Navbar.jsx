@@ -2,9 +2,17 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function AnimeNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const navItems = [
     { name: "Anime", to: "/anime" },

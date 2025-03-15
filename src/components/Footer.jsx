@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="px-6 py-4 bg-gradient-to-br from-[#202216] via-[#2c2f23] to-[#4a4d39] text-[#f2de9b] rounded-lg shadow-lg">
+    <footer className="px-6 py-4 bg-gradient-to-br from-[#202216] via-[#2c2f23] to-[#4a4d39] text-[#f2de9b] shadow-lg">
       <div className="flex flex-col md:flex-row items-center justify-between w-full space-y-4 md:space-y-0">
         {/* Logo and Brand Name */}
         <div className="flex items-center gap-2 text-xl font-bold">
