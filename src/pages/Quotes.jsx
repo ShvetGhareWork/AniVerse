@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { motion } from "framer-motion";
 import AnimeNavbar from "../components/Navbar";
 import ShopContext from "../context/ShopContext";
+import Footer from "../components/Footer";
 
 const Quotes = () => {
   const { Quotes } = useContext(ShopContext);
@@ -111,6 +112,7 @@ const Quotes = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
