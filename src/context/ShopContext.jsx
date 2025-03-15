@@ -1,6 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import productsData from "../data/animesdataset.json"; // Adjust path if needed
 import Mangadetails from "../data/mangadataset.json";
+import AnimeQuotes from "../data/AnimeQuotesdataset.json";
+import AnimeCharacter from "../data/characters_processeddataset.json";
 // Create Context
 const ShopContext = createContext();
 
@@ -8,6 +10,8 @@ const ShopContext = createContext();
 export const ShopProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [Manga, setManga] = useState([]);
+  const [Quotes, setQuotes] = useState([]);
+  const [Character, setCharacter] = useState([]);
 
   useEffect(() => {
     setProducts(productsData);
@@ -15,9 +19,26 @@ export const ShopProvider = ({ children }) => {
   useEffect(() => {
     setManga(Mangadetails);
   }, []);
+  useEffect(() => {
+    setQuotes(AnimeQuotes);
+  }, []);
+  useEffect(() => {
+    setCharacter(AnimeCharacter);
+  }, []);
 
   return (
-    <ShopContext.Provider value={{ products, setProducts, Manga, setManga }}>
+    <ShopContext.Provider
+      value={{
+        products,
+        setProducts,
+        Manga,
+        setManga,
+        Quotes,
+        setQuotes,
+        Character,
+        setCharacter,
+      }}
+    >
       {children}
     </ShopContext.Provider>
   );

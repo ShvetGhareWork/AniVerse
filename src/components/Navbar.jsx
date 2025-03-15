@@ -18,7 +18,7 @@ export default function AnimeNavbar() {
     { name: "Anime", to: "/anime" },
     { name: "Manga", to: "/manga" },
     { name: "Characters", to: "/characters" },
-    { name: "About", to: "/about" },
+    { name: "Quotes", to: "/quotes" },
   ];
 
   return (
