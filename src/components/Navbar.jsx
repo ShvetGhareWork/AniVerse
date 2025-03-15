@@ -69,7 +69,7 @@ export default function AnimeNavbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-[#9ca081]"
+              className="text-white pt-2 hover:text-[#9ca081]"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
