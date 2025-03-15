@@ -71,24 +71,17 @@ export default function AnimeNavbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="md:hidden absolute top-16 left-0 w-full bg-[#202216] bg-opacity-90 shadow-lg"
-        >
-          <div className="flex flex-col items-center space-y-4 py-4">
-            {navItems.map((item, index) => (
-              <NavLink
-                key={index}
-                to={item.to}
-                className="text-lg font-medium hover:text-[#9ca081] transition duration-300 "
-              >
-                {item.name}
-              </NavLink>
-            ))}
-          </div>
-        </motion.div>
+        <div className="flex flex-col items-center space-y-4 py-4">
+          {navItems.map((item, index) => (
+            <NavLink
+              key={index}
+              to={item.to}
+              className="text-lg font-medium hover:text-[#9ca081] transition duration-300 "
+            >
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
       )}
     </nav>
   );
