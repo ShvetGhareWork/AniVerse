@@ -23,13 +23,7 @@ export default function CardSliderPopular() {
   const visibleItems = items.slice(0, 4);
 
   return (
-    <motion.div
-      className="bg-[#f2de9b] overflow-hidden relative"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: false, amount: 0.3 }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="bg-[#f2de9b] overflow-hidden relative">
       {/* Title */}
       <div className="flex justify-start pl-4 text-[#202216] font-semibold items-start">
         <ScrollFloat
@@ -48,17 +42,9 @@ export default function CardSliderPopular() {
         {/* Mobile View: List Layout */}
         <div className="md:hidden space-y-4">
           {visibleItems.map((item, index) => (
-            <motion.div
+            <div
               key={item.key}
               className="flex items-center space-x-4 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg border border-[#202216] p-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
             >
               {/* Image */}
               <img
@@ -88,7 +74,7 @@ export default function CardSliderPopular() {
                   {item.episodes} Episodes
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -152,6 +138,6 @@ export default function CardSliderPopular() {
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
