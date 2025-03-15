@@ -24,13 +24,7 @@ export default function CardSliderPopular() {
   const visibleItems = items.slice(0, 4);
 
   return (
-    <motion.div
-      className="bg-[#202216] overflow-hidden relative"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: false, amount: 0.3 }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="bg-[#202216] overflow-hidden relative">
       {/* Title */}
       <div className="flex justify-start pl-4 text-[#f2de9b] font-semibold items-start">
         <ScrollFloat
@@ -49,17 +43,9 @@ export default function CardSliderPopular() {
         {/* Mobile View: List Layout */}
         <div className="md:hidden space-y-4">
           {visibleItems.map((item, index) => (
-            <motion.div
+            <div
               key={item.key}
               className="flex items-center space-x-4 bg-[#202216] text-[#f2de9b] shadow-lg rounded-lg border border-[#f2de9b] p-2"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
             >
               {/* Image */}
               <img
@@ -90,24 +76,16 @@ export default function CardSliderPopular() {
                   {item.episodes} Episodes
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Laptop View: Cards Layout */}
         <div className="hidden md:flex no-scrollbar space-x-6 overflow-x-auto overflow-y-clip">
           {items.map((item, index) => (
-            <motion.div
+            <div
               key={item.key}
               className="w-60 h-auto bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#202216]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut",
-              }}
             >
               {/* Image */}
               <img
@@ -143,7 +121,7 @@ export default function CardSliderPopular() {
                   {item.episodes} Episodes
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -154,6 +132,6 @@ export default function CardSliderPopular() {
           </button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
