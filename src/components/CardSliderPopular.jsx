@@ -133,13 +133,6 @@ export default function CardSliderPopular() {
             </motion.div>
           ))}
         </div>
-
-        {/* View More (Mobile Only) */}
-        <div className="mt-4 flex justify-center md:hidden">
-          <button className="text-[#f2de9b] to-[#202216] bg-gradient-to-r from-[#c4a76b] px-6 py-2 rounded-lg font-semibold hover:bg-[#c4a76b] transition">
-            View More
-          </button>
-        </div>
       </div>
     </div>
   );
