@@ -1,40 +1,29 @@
+import React, { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import AnimeNavbar from "./Navbar";
-import { useEffect, useState } from "react";
 
-export default function App() {
-  const [splineSize, setSplineSize] = useState({
-    width: "100%",
-    height: "100vh",
-  });
+export default function AniVerse() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Adjust size on window resize
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setSplineSize({ width: "100%", height: "100vh" });
-      } else {
-        setSplineSize({ width: "100%", height: "100vh" });
-      }
-    };
-
-    handleResize();
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const splineScene = isMobile
+    ? "https://prod.spline.design/UsE-RAeji1ZWCDH0/scene.splinecode"
+    : "https://prod.spline.design/QmQ1403JcMuoP-hu/scene.splinecode";
+
+  const containerStyle = isMobile
+    ? "w-full h-screen flex items-center justify-center "
+    : "min-h-screen flex items-center justify-center ";
+
   return (
     <>
       <AnimeNavbar />
-      <div
-        style={{
-          width: splineSize.width,
-          height: splineSize.height,
-          margin: "0 auto",
-          overflow: "hidden",
-        }}
-      >
-        <Spline scene="https://prod.spline.design/HdQddL5ZyI1whn5Q/scene.splinecode" />
+      <div className={containerStyle}>
+        <Spline scene={splineScene} showControls={false} />
       </div>
     </>
   );
