@@ -12,6 +12,7 @@ export default function CardSliderPopular() {
     image: product.image_url,
     name: product.Title,
     rating: product.Score,
+    URL: product.page_url,
     Volumes:
       product.Volumes == "?"
         ? "Currently Airing"
@@ -47,7 +48,8 @@ export default function CardSliderPopular() {
           {visibleItems.map((item, index) => (
             <div
               key={item.key}
-              className="flex items-center space-x-4 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg border border-[#202216] p-2"
+              className="flex items-center space-x-4 bg-[#f2de9b] text-[#202216] shadow-lg cursor-pointer rounded-lg border border-[#202216] p-2"
+              onClick={() => window.open(item.URL, "_blank")}
             >
               {/* Image */}
               <img
@@ -87,7 +89,8 @@ export default function CardSliderPopular() {
           {items.map((item, index) => (
             <div
               key={item.key}
-              className="w-60 bg-[#f2de9b] text-[#202216] border-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border "
+              className="w-60 bg-[#f2de9b] text-[#202216] border-[#202216] shadow-lg cursor-pointer rounded-lg overflow-hidden shrink-0 border "
+              onClick={() => window.open(item.URL, "_blank")}
             >
               {/* Image */}
               <img

@@ -15,6 +15,7 @@ export default function CardSliderPopular() {
       rating: product.score,
       episodes: product.episodes,
       popular: product.popularity,
+      URL: product.link,
     }))
     .sort((a, b) => a.popular - b.popular)
     .slice(0, 15);
@@ -44,7 +45,8 @@ export default function CardSliderPopular() {
           {visibleItems.map((item, index) => (
             <div
               key={item.key}
-              className="flex items-center space-x-4 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg border border-[#202216] p-2"
+              className="flex items-center space-x-4 bg-[#f2de9b] text-[#202216] shadow-lg cursor-pointer rounded-lg border border-[#202216] p-2"
+              onClick={() => window.open(item.URL, "_blank")}
             >
               {/* Image */}
               <img
@@ -83,7 +85,8 @@ export default function CardSliderPopular() {
           {items.map((item, index) => (
             <motion.div
               key={item.key}
-              className="w-60 bg-[#f2de9b] text-[#202216] shadow-lg rounded-lg overflow-hidden shrink-0 border border-[#202216]"
+              className="w-60 bg-[#f2de9b] text-[#202216] shadow-lg cursor-pointer rounded-lg overflow-hidden shrink-0 border border-[#202216]"
+              onClick={() => window.open(item.URL, "_blank")}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}

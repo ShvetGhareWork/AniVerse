@@ -12,10 +12,26 @@ export const ShopProvider = ({ children }) => {
   const [Manga, setManga] = useState([]);
   const [Quotes, setQuotes] = useState([]);
   const [Character, setCharacter] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(
+    localStorage.getItem("selectedGenre") || "Action"
+  );
+
+  const filteredProducts = products.filter((product) =>
+    product.genre.includes(selectedGenre)
+  );
+
+  const sortedProducts = [...filteredProducts].sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
+
+  // console.log(sortedProducts);
 
   useEffect(() => {
     setProducts(productsData);
   }, []);
+  useEffect(() => {
+    localStorage.setItem("selectedGenre", selectedGenre);
+  }, [selectedGenre]);
   useEffect(() => {
     setManga(Mangadetails);
   }, []);
@@ -37,6 +53,10 @@ export const ShopProvider = ({ children }) => {
         setQuotes,
         Character,
         setCharacter,
+        selectedGenre,
+        setSelectedGenre,
+        filteredProducts,
+        sortedProducts,
       }}
     >
       {children}

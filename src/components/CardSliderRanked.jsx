@@ -16,6 +16,7 @@ export default function CardSliderRanked() {
       episodes: product.episodes,
       popular: product.popularity,
       rank: product.ranked,
+      URL: product.link,
     }))
     .sort((a, b) => b.rank - a.rank)
     .slice(0, 15);
@@ -45,7 +46,8 @@ export default function CardSliderRanked() {
           {visibleItems.map((item, index) => (
             <div
               key={item.key}
-              className="flex items-center space-x-4 bg-[#202216] text-[#f2de9b] shadow-lg rounded-lg border border-[#f2de9b] p-2"
+              className="flex items-center space-x-4 bg-[#202216] text-[#f2de9b] cursor-pointer shadow-lg rounded-lg border border-[#f2de9b] p-2"
+              onClick={() => window.open(item.URL, "_blank")}
             >
               {/* Image */}
               <img
@@ -85,7 +87,8 @@ export default function CardSliderRanked() {
           {items.map((item, index) => (
             <div
               key={item.key}
-              className="w-60 bg-[#202216] text-[#f2de9b] border-[#f2de9b] shadow-lg rounded-lg overflow-hidden shrink-0 border "
+              className="w-60 bg-[#202216] text-[#f2de9b] border-[#f2de9b] cursor-pointer shadow-lg rounded-lg overflow-hidden shrink-0 border "
+              onClick={() => window.open(item.URL, "_blank")}
             >
               {/* Image */}
               <img

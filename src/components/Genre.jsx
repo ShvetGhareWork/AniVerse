@@ -1,10 +1,11 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import { motion, useInView } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
 import ScrollFloat from "../ReactBits/ScrollText.jsx";
 import AnimeGrid from "./AnimeGrid.jsx";
 import MangaGrid from "./MangaGrid.jsx";
+import ShopContext from "../context/ShopContext.jsx";
 
 const AnimatedItem = ({
   children,
@@ -48,6 +49,8 @@ const AnimatedList = ({
   const [keyboardNav, setKeyboardNav] = useState(false);
   const [topGradientOpacity, setTopGradientOpacity] = useState(0);
   const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1);
+  // const [selectedGenre, setSelectedGenre] = useState([]);
+  const navigate = useNavigate();
 
   const handleScroll = (e) => {
     const { scrollTop, scrollHeight, clientHeight } = e.target;
@@ -57,6 +60,9 @@ const AnimatedList = ({
       scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1)
     );
   };
+  // sort
+  const { setSelectedGenre } = useContext(ShopContext);
+  // console.log(genres.genre);
 
   // Keyboard Navigation
   useEffect(() => {
@@ -123,6 +129,10 @@ const AnimatedList = ({
                     className={`relative bg-[#111] rounded-lg ${
                       selectedIndex === index ? "bg-[#222]" : ""
                     } ${itemClassName}`}
+                    onClick={() => {
+                      setSelectedGenre(item.genre);
+                      navigate("/anime-genre");
+                    }}
                   >
                     {/* Image */}
                     <img

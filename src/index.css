@@ -53,3 +53,13 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(#f2de9f, #202216 80%);
+}
+
+.outline-text {
+  -webkit-text-stroke: 1px white;
+}
