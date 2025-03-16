@@ -1,10 +1,10 @@
 import React from "react";
-import AnimeNavbar from "../components/Navbar";
+import SplineScene from "../components/SplineScene";
 
 const Home = () => {
   return (
     <div>
-      <AnimeNavbar />
+      <SplineScene />
     </div>
   );
 };
