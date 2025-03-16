@@ -76,9 +76,9 @@ const App = () => {
           enableArrowNavigation={true}
           displayScrollbar={true}
         />
-        <div className="w-full h-full p-7 lg:p-20">
+        {/* <div className="w-full h-full p-7 lg:p-20">
           <AddComment onCommentPost={handleCommentPost} />
-        </div>
+        </div> */}
         <Footer />
       </div>
     </>
