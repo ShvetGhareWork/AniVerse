@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from "react";
 import productsData from "../data/animesdataset.json"; // Adjust path if needed
 import Mangadetails from "../data/mangadataset.json";
 import AnimeQuotes from "../data/AnimeQuotesdataset.json";
-import AnimeCharacter from "../data/characters_processeddataset.json";
+import AnimeCharacter from "../data/character_data.json";
 // Create Context
 const ShopContext = createContext();
 

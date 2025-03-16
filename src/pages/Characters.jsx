@@ -82,6 +82,8 @@ export default function Characters() {
                   <div className="h-4 bg-[#f2de9b] rounded w-1/2 mb-1" />
                   <div className="h-4 bg-[#f2de9b] rounded w-1/3 mb-1" />
                   <div className="h-4 bg-[#f2de9b] rounded w-1/4 mb-1" />
+                  <div className="h-4 bg-[#f2de9b] rounded w-1/5 mb-1" />
+                  <div className="h-4 bg-[#f2de9b] rounded w-1/6 mb-1" />
                 </div>
               </motion.div>
             ))
