@@ -67,7 +67,7 @@ export default function Characters() {
         {/* Character Cards */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"
         >
           {/* Show skeleton only during initial load */}
           {loading ? (
@@ -92,9 +92,9 @@ export default function Characters() {
                 className="bg-[#202216] border-4 border-[#202216] w-full shadow-lg rounded-2xl overflow-hidden"
               >
                 <img
-                  src=""
+                  src={char.id}
                   alt={char.romji}
-                  className="w-full bg-[#f2de9f] h-32 object-cover"
+                  className="w-full bg-contain bg-[#f2de9f] h-48 object-cover"
                 />
                 <div className="p-4">
                   <h2 className="text-xl font-bold text-[#f2de9b]">
