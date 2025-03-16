@@ -13,14 +13,14 @@ export default function Characters() {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // Initial data load with skeleton
   useEffect(() => {
-    setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 3000);
+    const timer = setTimeout(() => setLoading(false), 2000); // Initial loading
     return () => clearTimeout(timer);
-  }, [selectedLetter, searchTerm]);
+  }, []);
 
-  const animeCharacters = Character;
-  const filteredCharacters = animeCharacters.filter(
+  // Filter characters instantly without delay
+  const filteredCharacters = Character.filter(
     (char) =>
       char.romji?.startsWith(selectedLetter) &&
       char.romji?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -29,10 +29,11 @@ export default function Characters() {
   return (
     <>
       <AnimeNavbar />
-      <div className="min-h-screen bg-gradient-to-b from-[#f2de9b] to-[#202216] p-5">
+      <div className="imagebody p-5">
         <h1 className="text-4xl font-bold text-center mb-6 text-[#202216]">
           Anime Characters
         </h1>
+
         {/* Alphabet Buttons */}
         <div className="flex justify-center gap-2 flex-wrap mb-6">
           {alphabet.map((letter) => (
@@ -64,12 +65,13 @@ export default function Characters() {
         </div>
 
         {/* Character Cards */}
-        {loading ? (
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {[...Array(6)].map((_, index) => (
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          {/* Show skeleton only during initial load */}
+          {loading ? (
+            [...Array(6)].map((_, index) => (
               <motion.div
                 key={index}
                 className="bg-[#202216] border border-[#f2de9b] shadow-lg rounded-2xl overflow-hidden animate-pulse"
@@ -82,26 +84,17 @@ export default function Characters() {
                   <div className="h-4 bg-[#f2de9b] rounded w-1/4 mb-1" />
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
-        ) : filteredCharacters.length ? (
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {filteredCharacters.map((char) => (
-              <motion.div
+            ))
+          ) : filteredCharacters.length > 0 ? (
+            filteredCharacters.map((char) => (
+              <div
                 key={char.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="bg-[#202216] w-full shadow-lg rounded-2xl overflow-hidden"
+                className="bg-[#202216] border-4 border-[#202216] w-full shadow-lg rounded-2xl overflow-hidden"
               >
                 <img
-                  src={char.image}
+                  src=""
                   alt={char.romji}
-                  className="w-full h-32 object-cover"
+                  className="w-full bg-[#f2de9f] h-32 object-cover"
                 />
                 <div className="p-4">
                   <h2 className="text-xl font-bold text-[#f2de9b]">
@@ -117,14 +110,14 @@ export default function Characters() {
                   <p className="text-[#f2de9b]">Age: {char.age}</p>
                   <p className="text-[#f2de9b]">Sex: {char.sex}</p>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        ) : (
-          <p className="text-center col-span-full text-gray-500">
-            No characters found.
-          </p>
-        )}
+              </div>
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-500">
+              No characters found.
+            </p>
+          )}
+        </motion.div>
       </div>
       <Footer />
     </>

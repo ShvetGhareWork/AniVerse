@@ -45,6 +45,9 @@ body {
   background-repeat: no-repeat;
   background-position: 69%; */
 }
+.imagebody {
+  background: linear-gradient(135deg, #f2de9b, #202216);
+}
 
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
