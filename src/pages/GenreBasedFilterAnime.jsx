@@ -64,7 +64,8 @@ const GenreBasedFilter = () => {
             filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-[#202216] border-4 border-[#202216] w-full shadow-lg rounded-2xl overflow-hidden"
+                className="bg-[#202216] border-4 border-[#202216] w-full cursor-pointer shadow-lg rounded-2xl overflow-hidden"
+                onClick={() => window.open(product.link, "_blank")}
               >
                 <img
                   src={product.img_url}
